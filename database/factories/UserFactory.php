@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'isChief' => random_int(0, 1),
             'msOutlookMail' => $this->faker->email,
             'officeNumber' => random_int(100, 999),
-            'ipPhone' => fake()->numberBetween(999, 99999),
+            'ipPhone' => random_int(1000, 9999),
             'phoneNumber' => $this->faker->phoneNumber,
 
             'post_id' => Post::get()->random()->id,
