@@ -18,3 +18,15 @@ Route::get('/', function () {
 });
 
 Route::resource('users', \App\Http\Controllers\UserController::class);
+
+//Verb  URL                   Action        ROUTE NAME
+//==========================================================
+//GET	 /photos	          index	        photos.index
+//GET	 /photos/create	      create	    photos.create
+//POST	 /photos	          store	        photos.store
+//GET	 /photos/{photo}   	  show	        photos.show
+//GET	 /photos/{photo}/edit edit	        photos.edit
+//PATCH	 /photos/{photo}	  update	    photos.update
+//DELETE /photos/{photo}	  destroy	    photos.destroy
+
+Route::get('getCsrf', [\App\Http\Controllers\additional\Tests::class, 'getCsrf']);

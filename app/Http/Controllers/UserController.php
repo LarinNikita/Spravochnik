@@ -22,14 +22,14 @@ class UserController extends Controller
         return view('backendTests/create', compact('departments'));
     }
 
-    public function store(Request $request)
+    public function store()
     {
-        $data = $request->validate([
+        $data = request()->validate([
             'FIO' => '',
             'account' => '',
             'password' => '',
-            'isChief' => '',
-            'msOutlookMai' => '',
+            'isChief' => 'boolean',
+            'msOutlookMail' => '',
             'officeNumber' => '',
             'ipPhone' => '',
             'phoneNumber' => '',
@@ -37,10 +37,11 @@ class UserController extends Controller
             'post_id' => '',
             'status_id' => '',
             'os_id' => '',
+            'department_id' => '',
         ]);
 
         User::Create($data);
-        redirect()->route('users.index'); //затестить в постмене
+        redirect()->route('users.index');
     }
 
     /**
@@ -49,20 +50,14 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('edit', compact('user'));
     }
 
     /**
@@ -72,9 +67,26 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user)
     {
-        //
+        $data = request()->validate([
+            'FIO' => '',
+            'account' => '',
+            'password' => '',
+            'isChief' => 'boolean',
+            'msOutlookMail' => '',
+            'officeNumber' => '',
+            'ipPhone' => '',
+            'phoneNumber' => '',
+
+            'post_id' => '',
+            'status_id' => '',
+            'os_id' => '',
+            'department_id' => '',
+        ]);
+
+        $user->update($data);
+        redirect()->route('users.index');
     }
 
     /**
@@ -83,8 +95,9 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        redirect()->route('users.index');
     }
 }
