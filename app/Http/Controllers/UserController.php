@@ -26,6 +26,7 @@ class UserController extends Controller
     {
         $data = request()->validate([
             'FIO' => '',
+            'ip' => '',
             'account' => '',
             'password' => '',
             'isChief' => 'boolean',
@@ -71,6 +72,7 @@ class UserController extends Controller
     {
         $data = request()->validate([
             'FIO' => '',
+            'ip' => '',
             'account' => '',
             'password' => '',
             'isChief' => 'boolean',

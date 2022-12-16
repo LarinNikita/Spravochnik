@@ -22,6 +22,7 @@ class UserFactory extends Factory
     {
         return [
             'FIO' => fake()->name(),
+            'ip' => $this->faker->localIpv4,
             'account' => fake()->unique()->safeEmail(),
             'password' => random_int(10000, 99999),
             'isChief' => random_int(0, 1),

@@ -18,6 +18,10 @@ Route::get('/', function () {
 });
 
 Route::resource('users', \App\Http\Controllers\UserController::class);
+Route::resource('posts', \App\Http\Controllers\PostController::class);
+Route::resource('oss', \App\Http\Controllers\OsController::class);
+Route::resource('statuses', \App\Http\Controllers\StatusController::class);
+Route::resource('departments', \App\Http\Controllers\DepartmentController::class);
 
 //Verb  URL                   Action        ROUTE NAME
 //==========================================================
