@@ -15,12 +15,23 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('FIO');
+            $table->string('account')->unique();
             $table->string('password');
+            $table->boolean('isChief')->default(false);
+            $table->string('msOutlookMail');
+            $table->string('officeNumber');
+            $table->string('ipPhone')->unique();
+            $table->string('phoneNumber')->nullable();
+
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('os_id');
+
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
