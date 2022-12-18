@@ -23,6 +23,9 @@ Route::resource('oss', \App\Http\Controllers\OsController::class);
 Route::resource('statuses', \App\Http\Controllers\StatusController::class);
 Route::resource('departments', \App\Http\Controllers\DepartmentController::class);
 
+Route::get('search', [\App\Http\Controllers\additional\Tests::class, 'search'])->name('search');
+Route::get('find', [\App\Http\Controllers\additional\Tests::class, 'find'])->name('find');
+
 //Verb  URL                   Action        ROUTE NAME
 //==========================================================
 //GET	 /photos	          index	        photos.index
