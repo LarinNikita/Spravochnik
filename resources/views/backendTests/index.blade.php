@@ -3,10 +3,10 @@
     <div>
         @if(count($users))
             <table class="table">
-                <th scope="col">#</th>
-                <th scope="col">FIO</th>
-                <th scope="col">account</th>
-                <th scope="col">ipPhone</th>
+                <th>@sortablelink('#')</th>
+                <th>@sortablelink('FIO')</th>
+                <th>@sortablelink('account')</th>
+                <th>@sortablelink('ipPhone')</th>
                 @foreach($users as $user)
                     <tr>
                         <th scope="row">{{$user->id}}</th>

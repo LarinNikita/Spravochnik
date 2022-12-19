@@ -25,6 +25,7 @@ Route::resource('departments', \App\Http\Controllers\DepartmentController::class
 
 Route::get('search', [\App\Http\Controllers\additional\Tests::class, 'search'])->name('search');
 Route::get('find', [\App\Http\Controllers\additional\Tests::class, 'find'])->name('find');
+Route::get('getUsersByDep/{departmentId}', [\App\Http\Controllers\additional\Tests::class, 'getUsersByDep'])->name('getUsersByDep');
 
 //Verb  URL                   Action        ROUTE NAME
 //==========================================================
