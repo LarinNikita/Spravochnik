@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\AuthController::class, 'authForm']);
 
 Route::resource('users', \App\Http\Controllers\UserController::class);
 Route::resource('posts', \App\Http\Controllers\PostController::class);
@@ -26,6 +24,9 @@ Route::resource('departments', \App\Http\Controllers\DepartmentController::class
 Route::get('search', [\App\Http\Controllers\additional\Tests::class, 'search'])->name('search');
 Route::get('find', [\App\Http\Controllers\additional\Tests::class, 'find'])->name('find');
 Route::get('getUsersByDep/{departmentId}', [\App\Http\Controllers\additional\Tests::class, 'getUsersByDep'])->name('getUsersByDep');
+
+Route::get('auth', [\App\Http\Controllers\AuthController::class, 'authForm']);
+Route::get('authPossess', [\App\Http\Controllers\AuthController::class, 'auth'])->name('auth');
 
 //Verb  URL                   Action        ROUTE NAME
 //==========================================================

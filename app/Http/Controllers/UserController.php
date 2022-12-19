@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::sortable()->paginate(10);
+        $users = User::sortable()->get();
         $departments = Department::all();
         return view('backendTests/index', compact('departments'), compact('users'));
     }
