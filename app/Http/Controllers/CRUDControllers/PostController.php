@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CRUDControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Os;
-use Illuminate\Http\Request;
+use App\Models\Post;
+use function dd;
+use function redirect;
+use function request;
+use function view;
 
-class OsController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +18,9 @@ class OsController extends Controller
      */
     public function index()
     {
-        $oss = Os::all();
-        dd($oss);
+        $posts = Post::all();
+        dd($posts);
+        return view('posts', compact('posts'));
     }
 
     /**
@@ -38,13 +42,12 @@ class OsController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'title' => '',
-            'image' => ''
+            'title' => ''
         ]);
 
-        Os::create($data);
+        Post::create($data);
         dd('69c');
-        redirect()->route();
+        redirect()->route('posts.index');
     }
 
     /**
@@ -55,7 +58,7 @@ class OsController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -66,7 +69,7 @@ class OsController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -76,15 +79,14 @@ class OsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Os $oss)
+    public function update(Post $post)
     {
         $data = request()->validate([
-            'title' => '',
-            'image' => ''
+            'title' => ''
         ]);
 
-        $oss->update($data);
-        dd('69u');
+        $post->update($data);
+        dd($post);
         redirect()->route();
     }
 
@@ -94,9 +96,9 @@ class OsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Os $oss)
+    public function destroy(Post $post)
     {
-        $oss->delete($oss);
+        $post->delete($post);
         dd('69d');
         redirect()->route();
     }

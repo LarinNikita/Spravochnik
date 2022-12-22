@@ -11,7 +11,7 @@
 <form action="{{route('auth')}}">
     <div class="form-group">
         <label for="exampleInputEmail1">Логин</label>
-        <input name="account" value="{{$user->first()->account}}">
+        <input name="account" @if(count($user) === 0) value="" @else value="{{$user->first()->account}}"@endif>
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Пароль</label>

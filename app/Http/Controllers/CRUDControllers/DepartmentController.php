@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CRUDControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
-use App\Models\Status;
-use Illuminate\Http\Request;
+use App\Models\Department;
+use function dd;
+use function redirect;
+use function request;
+use function view;
 
-class StatusController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +18,8 @@ class StatusController extends Controller
      */
     public function index()
     {
-        $statuses = Status::all();
-        dd($statuses);
+        $departments = Department::all();
+        dd($departments);
         return view('posts', compact('posts'));
     }
 
@@ -43,7 +45,7 @@ class StatusController extends Controller
             'title' => ''
         ]);
 
-        Status::create($data);
+        Department::create($data);
         dd('69c');
         redirect()->route('posts.index');
     }
@@ -77,14 +79,14 @@ class StatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Status $status)
+    public function update(Department $department)
     {
         $data = request()->validate([
             'title' => ''
         ]);
 
-        $status->update($data);
-        dd($status);
+        $department->update($data);
+        dd($department);
         redirect()->route();
     }
 
@@ -94,9 +96,9 @@ class StatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Status $status)
+    public function destroy(Department $department)
     {
-        $status->delete($status);
+        $department->delete($department);
         dd('69d');
         redirect()->route();
     }

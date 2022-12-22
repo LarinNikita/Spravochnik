@@ -24,7 +24,7 @@ class authController extends Controller
     {
         $user = User::where('account', $request->account)->get()->first();
 
-        if($request->password == $user->password)
+        if ($request->password == $user->password)
         {
             Auth::login($user);
             $request->session()->regenerate();
@@ -32,8 +32,7 @@ class authController extends Controller
             $users = User::sortable()->get();
             $departments = Department::all();
             return view('backendTests/index', compact('users', 'departments'));
-        }
-        else
+        } else
         {
             dd('suck');
         }

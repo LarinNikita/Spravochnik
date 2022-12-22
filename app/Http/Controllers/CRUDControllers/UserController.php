@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CRUDControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use App\Models\User;
-use Illuminate\Http\Request;
+use function redirect;
+use function request;
+use function view;
 
 class UserController extends Controller
 {
