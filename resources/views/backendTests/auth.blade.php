@@ -18,6 +18,8 @@
         <input name="password" placeholder="Введите пароль">
     </div>
     <button type="submit" class="btn btn-primary">Войти</button>
+
+    <label for="exampleInputEmail1">@error('email') suck @enderror</label>
 </form>
 </body>
 </html>

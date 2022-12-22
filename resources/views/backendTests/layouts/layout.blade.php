@@ -27,6 +27,9 @@
     </form>
 </nav>
 
+<a href="{{route('users.create')}}">Добавить сотрудника</a>
+<a href="{{route('logout')}}">Выйти</a>
+
     @yield('content')
 <br>
 <div>

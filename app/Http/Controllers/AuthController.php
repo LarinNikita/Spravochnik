@@ -7,6 +7,7 @@ use App\Models\Department;
 use http\Client\Curl\User as shutUp;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use function Webmozart\Assert\Tests\StaticAnalysis\ip;
 
 class authController extends Controller
@@ -25,6 +26,9 @@ class authController extends Controller
 
         if($request->password == $user->password)
         {
+            Auth::login($user);
+            $request->session()->regenerate();
+
             $users = User::sortable()->get();
             $departments = Department::all();
             return view('backendTests/index', compact('users', 'departments'));
@@ -34,5 +38,15 @@ class authController extends Controller
             dd('suck');
         }
 
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
