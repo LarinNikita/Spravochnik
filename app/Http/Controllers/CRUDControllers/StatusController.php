@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CRUDControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\Status;
+use function dd;
+use function redirect;
+use function request;
+use function view;
 
-class PostController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        dd($posts);
+        $statuses = Status::all();
+        dd($statuses);
         return view('posts', compact('posts'));
     }
 
@@ -42,7 +45,7 @@ class PostController extends Controller
             'title' => ''
         ]);
 
-        Post::create($data);
+        Status::create($data);
         dd('69c');
         redirect()->route('posts.index');
     }
@@ -76,14 +79,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Post $post)
+    public function update(Status $status)
     {
         $data = request()->validate([
             'title' => ''
         ]);
 
-        $post->update($data);
-        dd($post);
+        $status->update($data);
+        dd($status);
         redirect()->route();
     }
 
@@ -93,9 +96,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Status $status)
     {
-        $post->delete($post);
+        $status->delete($status);
         dd('69d');
         redirect()->route();
     }

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CRUDControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Department;
-use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\Os;
+use function dd;
+use function redirect;
+use function request;
 
-class DepartmentController extends Controller
+class OsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
-        dd($departments);
-        return view('posts', compact('posts'));
+        $oss = Os::all();
+        dd($oss);
     }
 
     /**
@@ -40,12 +40,13 @@ class DepartmentController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'title' => ''
+            'title' => '',
+            'image' => ''
         ]);
 
-        Department::create($data);
+        Os::create($data);
         dd('69c');
-        redirect()->route('posts.index');
+        redirect()->route();
     }
 
     /**
@@ -56,7 +57,7 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -67,7 +68,7 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -77,14 +78,15 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Department $department)
+    public function update(Os $oss)
     {
         $data = request()->validate([
-            'title' => ''
+            'title' => '',
+            'image' => ''
         ]);
 
-        $department->update($data);
-        dd($department);
+        $oss->update($data);
+        dd('69u');
         redirect()->route();
     }
 
@@ -94,9 +96,9 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy(Os $oss)
     {
-        $department->delete($department);
+        $oss->delete($oss);
         dd('69d');
         redirect()->route();
     }
